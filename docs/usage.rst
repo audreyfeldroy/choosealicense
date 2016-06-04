@@ -17,6 +17,10 @@ inside of `setup.py`:
         {{ choosealicense.insert_trove_classifiers() }}
     ]
 
-3. Add to plugin_requirements.txt:
+3. Add the license to the generated project's README:
+
+    "Free Software: {{ cookiecutter.open_source_license }}"
+
+4. Add to plugin_requirements.txt:
 
     choosealicense==0.2.0
