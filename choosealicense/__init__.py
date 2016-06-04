@@ -5,7 +5,7 @@ __email__ = 'aroy@alum.mit.edu'
 __version__ = '0.1.0'
 
 
-from cookiecutter.generate import generate_file
+from cookiecutter.generate import generate_file, generate_block
 from cookiecutter.plugins import CookiecutterPlugin
 
 
@@ -23,14 +23,30 @@ class ChooseALicensePlugin(CookiecutterPlugin):
         ]
     }
 
-    def insert_license():
+    def insert_license_file():
         """
-        Given a license choice, insert the corresponding license file into the
-        generated project's root.
+        Given `context["open_source_license"]`, insert the corresponding
+        license file into the generated project's root.
         """
         generate_file(
             project_dir="..",
             infile="LICENSE",
+            context=self.context,
+            env=self.env
+        )
+
+    def insert_trove_classifiers():
+        """
+        Given a license choice, render the block for the trove classifiers.
+
+        Use in a templated file like this:
+
+            {{ choosealicense.insert_trove_classifiers() }}
+        """
+        # Like generate_file, but returns the generated string instead of
+        # writing the string to a file.
+        return generate_block(
+            unrendered="_trove_classifiers.txt",
             context=self.context,
             env=self.env
         )
