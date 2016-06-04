@@ -19,7 +19,7 @@ Choose a License
 
 Choose a License is a Cookiecutter plugin for selecting an open-source license.
 
-* Free software: ISC license
+* Free software: Apache Software License 2.0
 * Documentation: https://choosealicense.readthedocs.io.
 
 Features
